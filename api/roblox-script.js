@@ -2,6 +2,16 @@
 let scripts = [];
 
 export default function handler(req, res) {
+  // Add CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Handle preflight request
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method === "POST") {
     const { Action } = req.body;
 
@@ -21,7 +31,6 @@ export default function handler(req, res) {
       return res.status(404).json({ error: "No instructions found." });
     }
 
-    // Return all scripts, or allow query ?id=crate001 in future
     return res.status(200).json(scripts);
   }
 
