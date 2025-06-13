@@ -15,13 +15,12 @@ module.exports = function handler(req, res) {
     return res.send(`warn("Access Denied: You are not authorized to use this script.")`);
   }
 
-  const match = req.url.match(/=([a-zA-Z0-9_-]+)$/);
-  if (!match) {
+  const scriptName = req.query.name;
+  if (!scriptName) {
     res.setHeader("Content-Type", "text/plain");
     return res.status(400).send(`warn("Bad Request: No script name provided.")`);
   }
 
-  const scriptName = match[1];
   const filePath = join(process.cwd(), "roblox", "lua", "scripthub", `${scriptName}.lua`);
 
   try {
