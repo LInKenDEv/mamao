@@ -1,18 +1,14 @@
 {
-  "name": "roblox-vercel-api",
+  "name": "roblox-obfuscator-api",
   "version": "1.0.0",
-  "description": "A serverless API for sending structured instructions to a Roblox game.",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "vercel dev",
-    "start": "vercel dev",
-    "deploy": "vercel deploy"
+    "start": "node index.js"
   },
-  "author": "Your Name",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {},
-  "engines": {
-    "node": ">=18.0.0"
+  "dependencies": {
+    "luamin": "^1.1.0",
+    "noobfuscator": "^1.0.2"
   }
 }
