@@ -3,12 +3,12 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 -- Create the Window
 local Window = Rayfield:CreateWindow({
-    Name = "Perd's Mobile GUI",
-    LoadingTitle = "Perd's Hub",
-    LoadingSubtitle = "by Perd",
+    Name = "Mamamo hub",
+    LoadingTitle = "Mamamo Hub",
+    LoadingSubtitle = "by binebinilobyou",
     ConfigurationSaving = {
        Enabled = true,
-       FolderName = "PerdHub",
+       FolderName = "mamamoHub",
        FileName = "MyRayfieldConfig"
     },
     Discord = {
