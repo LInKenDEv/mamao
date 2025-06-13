@@ -11,6 +11,7 @@ loadstring(game:HttpGet(base .. "Tabs"))()
 loadstring(game:HttpGet(base .. "Sections"))()
 loadstring(game:HttpGet(base .. "Dividers"))()
 loadstring(game:HttpGet(base .. "Toggles"))()
+loadstring(game:HttpGet(base .. "Button"))()
 loadstring(game:HttpGet(base .. "Visibility"))()
 
 -- Rayfield:LoadConfiguration() should be inside one of the scripts (probably Visibility.lua)
