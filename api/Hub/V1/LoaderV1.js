@@ -6,6 +6,8 @@ export default function handler(req, res) {
   const accept = req.headers['accept'] || "";
   const referer = req.headers['referer'] || "";
   const origin = req.headers['origin'] || "";
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+
   const isRoblox = ua.includes("Roblox") && accept.includes("*/*");
   const isFromWeb = referer || origin;
 
@@ -14,24 +16,13 @@ export default function handler(req, res) {
     return res.send(`warn("Access Denied: You are not authorized to use this script.")`);
   }
 
-  const base = join(process.cwd(), "roblox", "lua");
-  const filesInOrder = [
-    "Window.lua",
-    "Tabs.lua",
-    "Sections.lua",
-    "Dividers.lua",
-    "Toggles.lua",
-    "Visibility.lua"
-  ];
+  const filePath = join(process.cwd(), 'roblox', 'lua', 'loader.lua');
 
   try {
-    const combinedLua = filesInOrder
-      .map(file => readFileSync(join(base, file), "utf8"))
-      .join("\n");
-
+    const obfuscatedCode = readFileSync(filePath, 'utf-8');
     res.setHeader("Content-Type", "text/plain");
-    res.status(200).send(combinedLua);
+    res.status(200).send(obfuscatedCode);
   } catch (err) {
-    res.status(500).send("-- Script loading failed.");
+    res.status(500).send("Script loading failed.");
   }
 }
