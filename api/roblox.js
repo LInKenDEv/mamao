@@ -1,5 +1,7 @@
 import { readFileSync } from "fs";
 import { join } from "path";
+import { obfuscate } from "noobfuscator";
+import { minify } from "luamin";
 
 export default function handler(req, res) {
   const ua = req.headers['user-agent'] || "";
@@ -8,25 +10,25 @@ export default function handler(req, res) {
   const origin = req.headers['origin'] || "";
   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
-  // ✅ Real Roblox clients only
+  // ✅ Only accept real Roblox clients
   const looksLikeRoblox = ua.includes("Roblox") && accept.includes("*/*");
-
-  // ❌ Reject anything with a referer or origin header (browsers, bots, Discord, etc.)
   const isFromWeb = referer || origin;
 
   if (!looksLikeRoblox || isFromWeb) {
-    // 🛡️ Send fake script to fool snoopers
     res.setHeader("Content-Type", "text/plain");
     return res.send(`warn("Access Denied: You are not authorized to use this script.")`);
   }
 
-  // ✅ Serve the actual Lua script
+  // ✅ Read, minify, and obfuscate the Lua script
   const filePath = join(process.cwd(), 'roblox', 'lua', 'loader.lua');
 
   try {
     const luaCode = readFileSync(filePath, 'utf-8');
+    const minified = minify(luaCode);
+    const obfuscated = obfuscate(minified); // <-- Turns it unreadable
+
     res.setHeader("Content-Type", "text/plain");
-    res.status(200).send(luaCode);
+    res.status(200).send(obfuscated);
   } catch (err) {
     res.status(500).send("Script loading failed.");
   }
