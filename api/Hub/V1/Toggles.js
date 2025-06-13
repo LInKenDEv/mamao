@@ -1,12 +1,11 @@
-import { readFileSync } from "fs";
-import { join } from "path";
+const { readFileSync } = require("fs");
+const { join } = require("path");
 
-export default function handler(req, res) {
+module.exports = function handler(req, res) {
   const ua = req.headers['user-agent'] || "";
   const accept = req.headers['accept'] || "";
   const referer = req.headers['referer'] || "";
   const origin = req.headers['origin'] || "";
-
   const isRoblox = ua.includes("Roblox") && accept.includes("*/*");
   const isFromWeb = referer || origin;
 
@@ -15,8 +14,7 @@ export default function handler(req, res) {
     return res.send(`warn("Access Denied: You are not authorized to use this script.")`);
   }
 
-  const filePath = join(process.cwd(), 'roblox', 'lua', 'Toggle.lua');
-
+  const filePath = join(process.cwd(), 'roblox', 'lua', 'window.lua');
   try {
     const code = readFileSync(filePath, 'utf-8');
     res.setHeader("Content-Type", "text/plain");
@@ -24,4 +22,4 @@ export default function handler(req, res) {
   } catch (err) {
     res.status(500).send("Script loading failed.");
   }
-}
+};
