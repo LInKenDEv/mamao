@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "luamin": "^1.1.0",
+    "luamin": "^0.1.0",
     "noobfuscator": "^1.0.2"
   }
 }
