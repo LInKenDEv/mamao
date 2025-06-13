@@ -1,8 +1,7 @@
 local MyButton = _G.MainTab:CreateButton({
-    Name = "Click Me!",
+    Name = "Infinite Yield",
     Callback = function()
-        print("Button was clicked!")
-        -- You can replace the line above with any action, like teleport or give item
+        loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/scripts=infiniteYield"))()
     end,
-    Flag = "owasa" -- not necessary for buttons, but added for completeness
+    Flag = "owasa"
 })
