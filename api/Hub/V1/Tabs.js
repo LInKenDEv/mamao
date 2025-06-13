@@ -14,7 +14,7 @@ module.exports = function handler(req, res) {
     return res.send(`warn("Access Denied: You are not authorized to use this script.")`);
   }
 
-  const filePath = join(process.cwd(), 'roblox', 'lua', 'window.lua');
+  const filePath = join(process.cwd(), 'roblox', 'lua', 'Tabs.lua');
   try {
     const code = readFileSync(filePath, 'utf-8');
     res.setHeader("Content-Type", "text/plain");
