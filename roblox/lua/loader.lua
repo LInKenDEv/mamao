@@ -1,12 +1,13 @@
--- ✅ Load Rayfield UI Library
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+-- Main loader script in Roblox
+local base = "https://mamao-five.vercel.app/api/Hub/V1/"
 
--- ✅ Load Modular GUI Components
-loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Window"))()
-loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Tabs"))()
-loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Toggles"))()
-loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Sections"))()
-loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Dividers"))()
-loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Visibility"))()
--- ✅ Load saved config
-Rayfield:LoadConfiguration()
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+
+_G.Window = loadstring(game:HttpGet(base .. "/Window.js"))()
+_G.MainTab = loadstring(game:HttpGet(base .. "/Tabs.js"))()
+loadstring(game:HttpGet(base .. "/Sections.js"))()
+loadstring(game:HttpGet(base .. "/Dividers.js"))()
+loadstring(game:HttpGet(base .. "/Toggles.js"))()
+loadstring(game:HttpGet(base .. "/Visibility.js"))()
+
+-- Rayfield:LoadConfiguration() should be inside one of the scripts (probably visibility.lua)
