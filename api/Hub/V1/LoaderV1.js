@@ -16,12 +16,12 @@ export default function handler(req, res) {
 
   const base = join(process.cwd(), "roblox", "lua");
   const filesInOrder = [
-    "window.lua",
-    "tabs.lua",
-    "sections.lua",
-    "dividers.lua",
-    "toggles.lua",
-    "visibility.lua"
+    "Window.lua",
+    "Tabs.lua",
+    "Sections.lua",
+    "Dividers.lua",
+    "Toggles.lua",
+    "Visibility.lua"
   ];
 
   try {
