@@ -5,6 +5,8 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Window"))()
 loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Tabs"))()
 loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Toggles"))()
-
+loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Sections"))()
+loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Dividers"))()
+loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/Visibility"))()
 -- ✅ Load saved config
 Rayfield:LoadConfiguration()
