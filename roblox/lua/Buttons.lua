@@ -7,7 +7,6 @@ local MyButton = _G.MainTab:CreateButton({
 })
 
 local ShopButton
-
 ShopButton = _G.MainTab:CreateButton({
     Name = "Shop UI",
     Callback = function()
