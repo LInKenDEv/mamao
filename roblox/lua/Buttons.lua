@@ -6,13 +6,13 @@ local MyButton = _G.MainTab:CreateButton({
     SectionParent = Section1
 })
 
-_G.MainTab:CreateButton({
+local ShopButton 
+ShopButton = _G.MainTab:CreateButton({
     Name = "Shop",
     Callback = function()
-        local button = ESPButton
+        local button = ShopButton
         local loading = true
-
-        -- Animate the button text in a coroutine
+            
         coroutine.wrap(function()
             local frames = { "Loading", "Loading.", "Loading..", "Loading..." }
             local i = 1
@@ -23,13 +23,12 @@ _G.MainTab:CreateButton({
             end
         end)()
 
-        -- Load the ESP script
         local success, err = pcall(function()
-            loadstring(game:HttpGet("haha nerd"))()
+            loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/scripts?name=shopui"))()
         end)
 
-        -- Stop animation and update button text
         loading = false
+
         if success then
             button:SetName("Shop UI Toggled")
         else
@@ -39,4 +38,3 @@ _G.MainTab:CreateButton({
     end,
     SectionParent = Section2
 })
-
