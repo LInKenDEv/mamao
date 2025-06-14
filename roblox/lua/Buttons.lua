@@ -3,7 +3,7 @@ local MyButton = _G.MainTab:CreateButton({
     Callback = function()
         loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/scripts?name=infiniteYield"))()
     end,
-    SectionParent = Section1
+    SectionParent = _G.Section1
 })
 
 local ShopButton
@@ -35,5 +35,5 @@ ShopButton = _G.MainTab:CreateButton({
             button:Set("❌ Load Failed")
         end
     end,
-    SectionParent = Section2
+    SectionParent = _G.Section2
 })
