@@ -6,18 +6,19 @@ local MyButton = _G.MainTab:CreateButton({
     SectionParent = Section1
 })
 
-local ShopButton 
+local ShopButton
+
 ShopButton = _G.MainTab:CreateButton({
-    Name = "Shop",
+    Name = "Shop UI",
     Callback = function()
         local button = ShopButton
         local loading = true
-            
+
         coroutine.wrap(function()
             local frames = { "Loading", "Loading.", "Loading..", "Loading..." }
             local i = 1
             while loading do
-                button:SetName(frames[i])
+                button:Set(frames[i])
                 i = i % #frames + 1
                 task.wait(0.3)
             end
@@ -30,10 +31,9 @@ ShopButton = _G.MainTab:CreateButton({
         loading = false
 
         if success then
-            button:SetName("Shop UI Toggled")
+            button:Set("✅ Shop UI Loaded")
         else
-            button:SetName("❌ Failed to Load")
-            warn("Shop script load failed:", err)
+            button:Set("❌ Load Failed")
         end
     end,
     SectionParent = Section2
