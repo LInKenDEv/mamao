@@ -3,5 +3,5 @@ local MyButton = _G.MainTab:CreateButton({
     Callback = function()
         loadstring(game:HttpGet("https://mamao-five.vercel.app/api/Hub/V1/scripts?name=infiniteYield"))()
     end,
-    Flag = "owasa"
+    SectionParent = Section1
 })
