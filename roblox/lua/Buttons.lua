@@ -5,3 +5,10 @@ local MyButton = _G.MainTab:CreateButton({
     end,
     SectionParent = Section1
 })
+
+_G.MainTab:CreateButton({
+    Name = "Shop",
+    Callback = function()
+        warn("no function")
+    end,
+    SectionParent = Section2
