@@ -1,1 +1,1 @@
-local Section = _G.MainTab:CreateSection("usefull stuff")
+local Section1 = _G.MainTab:CreateSection("usefull stuff")
